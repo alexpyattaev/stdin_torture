@@ -1,0 +1,5 @@
+{"naive":{
+	"build": "javac readline.java",
+	"run": "java readline"
+}
+}

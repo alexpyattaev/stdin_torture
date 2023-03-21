@@ -1,0 +1,23 @@
+{
+"naive":{
+	"build": "cargo build --release",
+	"run": "./target/release/readline_rs"
+	},
+"wordcount":{
+	"build":"cargo build --release --no-default-features --features=wordcount",
+	"run": "./target/release/readline_rs"
+	},
+
+"explicit_lock":{
+	"build":"cargo build --release --no-default-features --features=explicit_lock",
+	"run": "./target/release/readline_rs"
+},
+"read_until":{
+	"build":"cargo build --release --no-default-features --features=read_until",
+	"run": "./target/release/readline_rs"
+},
+"linereader":{
+	"build":"cargo build --release --no-default-features --features=linereader",
+	"run": "./target/release/readline_rs"
+}
+}

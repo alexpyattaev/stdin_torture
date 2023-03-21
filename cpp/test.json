@@ -1,0 +1,6 @@
+{
+	"naive": {
+		"build": "g++ -O3 -mtune=native readline.cpp -o readline",
+		"run": "./readline"
+	}
+}

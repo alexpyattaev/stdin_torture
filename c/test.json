@@ -1,0 +1,6 @@
+{
+	"naive":{
+		"build": "gcc -O3 -mtune=native readline.c -o readline",
+		"run": "./readline"
+	}
+}

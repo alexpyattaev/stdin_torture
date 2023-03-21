@@ -1,0 +1,5 @@
+{"naive":{
+	"build": "echo ",
+	"run": "python readline_py.py"
+}
+}
