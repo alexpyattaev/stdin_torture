@@ -1,0 +1,5 @@
+{"naive":{
+	"build": "echo noop",
+	"run": "bun run index.ts"
+}
+}

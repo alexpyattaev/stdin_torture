@@ -11,7 +11,7 @@ if not os.path.exists("testlines.txt"):
 else:
     print("Using existing test data file...")
 
-for lang in ["c", "cpp", "java", "python", "rust"]:
+def run_test(lang):
     print("======================")
     print(f"Testing {lang}")
     os.chdir(lang)
@@ -24,5 +24,11 @@ for lang in ["c", "cpp", "java", "python", "rust"]:
         print(f"Running bench command {bcmd}")
         os.system(bcmd)
     os.chdir('..')
+
+for lng in ["c", "cpp", "java", "python", "rust", "js"]:
+    try:
+        run_test(lng)
+    except:
+        print(f"Testing for {lng} failed!")
     
 print("All done!")
