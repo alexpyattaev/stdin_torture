@@ -11,7 +11,39 @@ fn countlines()->usize{
     cnt
 }
 
-#[cfg(feature = "explicit_lock")]
+#[cfg(feature = "naive_locked")]
+fn countlines()->usize{
+    use std::io::BufRead;
+    let mut cnt = 0;
+    let lines = io::stdin().lock().lines();
+    for _line in lines {
+        cnt+= 1; 
+    }
+    cnt
+}
+
+#[cfg(feature = "read_line")]
+fn countlines()->usize{
+    let mut cnt = 0;
+    let mut buffer = String::new();
+    let stdin = io::stdin();
+    loop {
+        let r = stdin.read_line(&mut buffer);
+        match r {
+            Ok(x) => {
+                if x==0{
+                    break;
+                }
+                cnt += 1;
+            }
+            Err(_) => {break;}
+        }
+        buffer.clear();
+    }
+    cnt
+}
+
+#[cfg(feature = "read_line_locked")]
 fn countlines()->usize{
     use std::io::BufRead;
     let mut cnt = 0;
@@ -34,6 +66,23 @@ fn countlines()->usize{
 }
 
 #[cfg(feature = "read_until")]
+fn countlines()->usize{
+    use std::io::BufRead;
+    let mut stdin = io::BufReader::new(io::stdin());
+    let mut cnt = 0;
+    let mut buf:Vec<u8> = Vec::with_capacity(2048);
+    loop {
+        let num_bytes = stdin.read_until(b'\n', &mut buf).expect("reading from stdin won't fail");
+        if num_bytes ==0 {
+            break;
+        }
+        cnt += 1;
+        buf.clear();
+    }
+    cnt
+}
+
+#[cfg(feature = "read_until_locked")]
 fn countlines()->usize{
     use std::io::BufRead;
     let mut stdin = io::stdin().lock();
